@@ -1,0 +1,115 @@
+﻿<Window x:Class="FileNameChenger.WindowMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="clr-namespace:UserControls;assembly=UserControls"
+    Title="FileNameChenger" Height="200" Width="280" ResizeMode="CanMinimize" Unloaded="Window_Unloaded" Closing="Window_Closing" AllowDrop="False" Icon="/FileNameChangar.ico">
+
+    <Window.Resources>
+
+        <Style x:Key="PropertyTriggerExampleCheckBoxStyle" TargetType="{x:Type CheckBox}">
+
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="Black" Height="181.484" Width="276.84" Name="Grid" AllowDrop="True" DragEnter="Grid_DragEnter" Drop="Grid_Drop">
+        <Grid.BindingGroup>
+            <BindingGroup Name="{x:Null}" NotifyOnValidationError="False" />
+        </Grid.BindingGroup>
+        <Button Canvas.Left="110" Canvas.Top="110" Width="80" Height="80" Margin="0,0,15.708,7.14" Name="buttonRun" VerticalAlignment="Bottom" HorizontalAlignment="Right" ForceCursor="False" Click="buttonRun_Click">
+            <Button.RenderTransform>
+                <RotateTransform CenterX="45" CenterY="45" Angle="10"/>
+            </Button.RenderTransform>
+
+            変換実行
+        </Button>
+        <Label Height="25.377" Margin="18.296,18.564,0,0" Name="labelFrom" VerticalAlignment="Top" ClipToBounds="False" Foreground="White" HorizontalAlignment="Left" Width="118.84">変換元</Label>
+        <Label Margin="18.296,72.114,0,82.824" Name="labelTo" Foreground="White" HorizontalAlignment="Left" Width="118.84">変換先</Label>
+        <CheckBox Height="14.28" Margin="12,0,111.522,24.276" Name="checkBoxInSubDir" VerticalAlignment="Bottom" Foreground="White" IsChecked="False" Background="Black" Visibility="Hidden">サブディレクトリ内を対象</CheckBox>
+        <Label Height="22.848" HorizontalAlignment="Right" Margin="0,12,-34.272,0" Name="labelSetup" VerticalAlignment="Top" Width="120" Foreground="White" MouseEnter="labelSetup_MouseEnter" Visibility="Hidden">詳細設定→</Label>
+        <Image Canvas.Left="110" Canvas.Top="100" Margin="52.122,65.688,0,35.7" Name="imageWork" Stretch="Fill" Source="file:///F:/リネージュ/fansiteKitThrone1/07.ロゴ/リネージュII.jpg" Opacity="0.25" HorizontalAlignment="Left" Width="79.776">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="45" CenterY="45" Angle="0" x:Name="workingImage"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
+        <ProgressBar Height="32.706" Margin="12,18.564,80.82,0" Name="progressBarWork" VerticalAlignment="Top" Background="#FFD4D0C8" Value="0" Foreground="Gray" SmallChange="0.1" FontSize="12" BorderBrush="Transparent" BorderThickness="1" />
+        <CheckBox Height="16" HorizontalAlignment="Left" Margin="17.136,0,0,39.27" Name="checkBoxViewControl" VerticalAlignment="Bottom" Width="120" Visibility="Hidden" Foreground="White" Style="{StaticResource PropertyTriggerExampleCheckBoxStyle}">
+            <CheckBox.Triggers>
+                <!--                <Trigger Property="Content" Value="">-->
+                <EventTrigger RoutedEvent="CheckBox.Checked">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!--フェイドイン-->
+                            <DoubleAnimation
+                Storyboard.TargetName="imageWork" 
+                Storyboard.TargetProperty="Opacity"
+                To="1.0" Duration="0:0:5"/>
+                            <DoubleAnimation 
+                Storyboard.TargetName="progressBarWork" 
+                Storyboard.TargetProperty="Opacity"
+                To="1.0" Duration="0:0:5"/>
+
+                            <!--フェイドアウト-->
+                            <DoubleAnimation
+                Storyboard.TargetName="labelFrom" 
+                Storyboard.TargetProperty="Opacity"
+                To="0.0" Duration="0:0:5"/>
+                            <DoubleAnimation
+                Storyboard.TargetName="labelTo" 
+                Storyboard.TargetProperty="Opacity"
+                To="0.0" Duration="0:0:5"/>
+                            <DoubleAnimation 
+                Storyboard.TargetName="textBoxFrom" 
+                Storyboard.TargetProperty="Opacity"
+                 To="0.0" Duration="0:0:5"/>
+                            <DoubleAnimation
+                Storyboard.TargetName="textBoxTo" 
+                Storyboard.TargetProperty="Opacity"
+                 To="0.0" Duration="0:0:5"/>
+                         </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </CheckBox.Triggers> アニメーションのトリガー
+        </CheckBox>
+        <CheckBox Height="16" HorizontalAlignment="Left" Margin="17,0,0,20" Name="checkBoxViewControl_Run" VerticalAlignment="Bottom" Width="120" Visibility="Hidden" Foreground="White" Style="{StaticResource PropertyTriggerExampleCheckBoxStyle}">
+            <CheckBox.Triggers>
+                <!--                <Trigger Property="Content" Value="">-->
+                <EventTrigger RoutedEvent="CheckBox.Checked">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <!--フェイドアウト-->
+                            <DoubleAnimation
+                Storyboard.TargetName="imageWork" 
+                Storyboard.TargetProperty="Opacity"
+                To="0.25" Duration="0:0:5"/>
+                            <DoubleAnimation 
+                Storyboard.TargetName="progressBarWork" 
+                Storyboard.TargetProperty="Opacity"
+                To="0.0" Duration="0:0:5"/>
+
+                            <!--フェイドイン-->
+                            <DoubleAnimation
+                Storyboard.TargetName="labelFrom" 
+                Storyboard.TargetProperty="Opacity"
+                To="1.0" Duration="0:0:5"/>
+                            <DoubleAnimation
+                Storyboard.TargetName="labelTo" 
+                Storyboard.TargetProperty="Opacity"
+                To="1.0" Duration="0:0:5"/>
+                            <DoubleAnimation 
+                Storyboard.TargetName="textBoxFrom" 
+                Storyboard.TargetProperty="Opacity"
+                 To="1.0" Duration="0:0:5"/>
+                            <DoubleAnimation
+                Storyboard.TargetName="textBoxTo" 
+                Storyboard.TargetProperty="Opacity"
+                 To="1.0" Duration="0:0:5"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </CheckBox.Triggers> アニメーションのトリガー
+        </CheckBox>
+        <Label Height="27.132" Margin="12,0,117.948,13.868" Name="labelNonFreeSpace" VerticalAlignment="Bottom" Visibility="Hidden" Foreground="Red">ディスク容量なし</Label>
+        <uc:UCFileSelectTextBox Name="textBoxFrom" Margin="17.136,40.698,109.704,0" Height="25" VerticalAlignment="Top"></uc:UCFileSelectTextBox>
+        <uc:UCFileSelectTextBox Name="textBoxTo" Margin="17.136,0,109.704,61.404" Height="25" VerticalAlignment="Bottom"></uc:UCFileSelectTextBox>
+    </Grid>
+</Window>

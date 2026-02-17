@@ -1,0 +1,13 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/FileNameChenger/obj
+/FileNameChenger/Img
+/FileNameChenger/bin/Release
+/.vs
+/Backup
+/FileNameChengerCore/.vs
+/FileNameChengerCore/obj
+/UserControl/.vs
+/UserControl/obj

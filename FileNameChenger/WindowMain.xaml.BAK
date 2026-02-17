@@ -1,0 +1,126 @@
+﻿//TODO:スレッドの廃棄処理を考慮
+//TODO:フェイドアウト　フェイドインで処理中のバーを表示する。
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace FileNameChenger
+{
+    /// <summary>
+    /// WindowMain.xaml の相互作用ロジック
+    /// </summary>
+    public partial class WindowMain : Window
+    {
+        public WindowMain()
+        {
+            InitializeComponent();
+        }
+
+        private void textBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == "" || textBox.Text == null) {
+                textBox.ToolTip = null;
+            } else {
+                textBox.ToolTip = textBox.Text;
+            }      
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO:フォルダー選択かっこ悪いのでカスタムを作成したい
+            System.Windows.Forms.FolderBrowserDialog fbd =
+                new System.Windows.Forms.FolderBrowserDialog();
+
+            System.Windows.Forms.DialogResult result = fbd.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                if (sender == buttonFrom)
+                {
+                    textBoxFrom.Text = fbd.SelectedPath;
+                }
+                else if (sender == buttonTo)
+                {
+                    textBoxTo.Text = fbd.SelectedPath;
+                }
+            }
+        }
+        
+        private void textBoxFrom_Drop(object sender, DragEventArgs e)
+        {
+            //TODO:ドラッグアンドドロップ対応したのだが動かないので調査が必要
+            /*
+            if (e.Effects == System.Windows.DragDropEffects.Copy)
+            {
+                TextBox textBox = (TextBox)sender;
+
+                textBox.Text = e.Data.GetData(System.Windows.DataFormats.FileDrop).ToString();
+            }
+            */
+            // ﾌｧｲﾙﾄﾞﾛｯﾌﾟした場合のみ処理
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                foreach (string fileName in (string[])e.Data.GetData(DataFormats.FileDrop))
+                {
+                    TextBox textBox = (TextBox)sender;
+                    textBox.Text = fileName;
+
+                    break;
+                }
+            }
+
+        }
+
+        private void textBoxFrom_DragEnter(object sender, DragEventArgs e)
+        {
+            textBoxFrom.Text = "test";
+            if (e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop)
+                || e.Data.GetDataPresent(System.Windows.DataFormats.Text)
+                || e.Data.GetDataPresent(System.Windows.DataFormats.UnicodeText))
+            {
+                e.Effects = System.Windows.DragDropEffects.Copy;
+            }
+        }
+
+        bool IsWidthUp = false;
+        private void labelSetup_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (IsWidthUp)
+            {
+                Width -= 200;
+                Grid.Width -= 200;
+            }
+            else
+            {
+                Width += 200;
+                Grid.Width += 200;
+            }
+            IsWidthUp = !IsWidthUp;
+        }
+
+        private void buttonRun_Click(object sender, RoutedEventArgs e)
+        {
+            WorkView view = new WorkView();
+            view.ShowDialog();
+            /*
+            CFileCopy fileCopy = new CFileCopy(textBoxFrom.Text, textBoxTo.Text);
+            if (fileCopy.Count > 0)
+            {
+                fileCopy.Run();
+            }
+             */
+        }
+
+    }
+}
