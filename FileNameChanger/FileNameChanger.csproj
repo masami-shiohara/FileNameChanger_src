@@ -183,7 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Img\ハイエロファント.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
