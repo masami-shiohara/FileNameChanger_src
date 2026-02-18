@@ -194,7 +194,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileNameChengerCore\FileNameChangerCore.csproj">
+    <ProjectReference Include="..\FileNameChangerCore\FileNameChangerCore.csproj">
       <Project>{8472e9c7-d27d-40f3-9843-3c95f47eff29}</Project>
       <Name>FileNameChangerCore</Name>
     </ProjectReference>
