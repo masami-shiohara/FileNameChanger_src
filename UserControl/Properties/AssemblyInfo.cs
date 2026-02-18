@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("UserControls")]
-[assembly: AssemblyCopyright("Copyright ©おりん  2009")]
+[assembly: AssemblyCopyright("Copyright ©M.S.  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

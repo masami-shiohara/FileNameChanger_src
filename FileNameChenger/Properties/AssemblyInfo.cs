@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FileNameChanger")]
-[assembly: AssemblyCopyright("Copyright ©おりん  2009")]
+[assembly: AssemblyCopyright("Copyright ©M.S.  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
