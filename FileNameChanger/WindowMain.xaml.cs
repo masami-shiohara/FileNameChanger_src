@@ -93,7 +93,7 @@ namespace FileNameChenger
             if (files.Length == 0)
             {
                 myBitmapImage.BeginInit();
-                myBitmapImage.UriSource = new Uri(@"FileNameChenger.ico", UriKind.RelativeOrAbsolute);
+                myBitmapImage.UriSource = new Uri(@"FileNameChanger.ico", UriKind.RelativeOrAbsolute);
                 myBitmapImage.EndInit();
             }
             else
