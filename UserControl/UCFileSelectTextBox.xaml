@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="UserControls.UCFileSelectTextBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="25" Width="150" AllowDrop="False">
-    <Grid>
+    Height="25" Width="150" AllowDrop="True">
+    <Grid AllowDrop="True">
         <TextBox Height="25" Name="textBoxFileName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" DragEnter="textBox_DragEnter" Drop="textBox_Drop" MouseEnter="textBox_MouseEnter" AllowDrop="True" />
         <Button Height="25" Margin="125,0,0,0" Name="buttonFileDirSelecter" VerticalAlignment="Top" Click="button_Click" AllowDrop="False">
             <Image Name="imgFileDirSelecter" Source="dir.JPG"></Image>
