@@ -22,10 +22,12 @@ namespace UserControls
         public UCFileSelectTextBox()
         {
             InitializeComponent();
-            textBoxFileName.DragEnter += new DragEventHandler(textBoxFileName_DragEnter);
 
-            textBoxFileName.PreviewDragEnter += new DragEventHandler(textBoxFileName_PreviewDragEnter);
-            textBoxFileName.PreviewDrop += new DragEventHandler(textBoxFileName_PreviewDrop);
+            textBoxFileName.DragEnter += new DragEventHandler(textBox_DragEnter);
+            textBoxFileName.Drop += new DragEventHandler(textBox_Drop);
+
+            //textBoxFileName.PreviewDragEnter += new DragEventHandler(textBoxFileName_PreviewDragEnter);
+            //textBoxFileName.PreviewDrop += new DragEventHandler(textBoxFileName_PreviewDrop);
 
             BitmapImage myBitmapImage = new BitmapImage();
 
@@ -38,23 +40,23 @@ namespace UserControls
         }
          
 
-        void textBoxFileName_PreviewDrop(object sender, DragEventArgs e)
-        {
-            //throw new NotImplementedException();
-            textBox_Drop(sender, e);
-        }
+        //void textBoxFileName_PreviewDrop(object sender, DragEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    textBox_Drop(sender, e);
+        //}
 
-        void textBoxFileName_PreviewDragEnter(object sender, DragEventArgs e)
-        {
-            //throw new NotImplementedException();
-            textBox_DragEnter(sender, e);
-        }
+        //void textBoxFileName_PreviewDragEnter(object sender, DragEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    textBox_DragEnter(sender, e);
+        //}
 
-        void textBoxFileName_DragEnter(object sender, DragEventArgs e)
-        {
-            //throw new NotImplementedException();
-            textBox_DragEnter(sender, e);
-        }
+        //void textBoxFileName_DragEnter(object sender, DragEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    textBox_DragEnter(sender, e);
+        //}
 
         public string Text
         {
@@ -112,7 +114,9 @@ namespace UserControls
             }
             */
             // ﾌｧｲﾙﾄﾞﾛｯﾌﾟした場合のみ処理
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) 
+                || e.Data.GetDataPresent(System.Windows.DataFormats.Text)
+                || e.Data.GetDataPresent(System.Windows.DataFormats.UnicodeText))
             {
                 foreach (string fileName in (string[])e.Data.GetData(DataFormats.FileDrop))
                 {
