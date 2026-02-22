@@ -109,7 +109,7 @@
             </CheckBox.Triggers> アニメーションのトリガー
         </CheckBox>
         <Label Height="27.132" Margin="12,0,117.948,13.868" Name="labelNonFreeSpace" VerticalAlignment="Bottom" Visibility="Hidden" Foreground="Red">ディスク容量なし</Label>
-        <uc:UCFileSelectTextBox Name="textBoxFrom" Margin="17.136,40.698,109.704,0" Height="25" VerticalAlignment="Top"></uc:UCFileSelectTextBox>
-        <uc:UCFileSelectTextBox Name="textBoxTo" Margin="17.136,0,109.704,61.404" Height="25" VerticalAlignment="Bottom"></uc:UCFileSelectTextBox>
+        <uc:UCFileSelectTextBox Name="textBoxFrom" Margin="17.136,40.698,109.704,0" Height="25" VerticalAlignment="Top" AllowDrop="True" PreviewDragEnter="Grid_DragEnter"/>
+        <uc:UCFileSelectTextBox Name="textBoxTo" Margin="17.136,0,109.704,61.404" Height="25" VerticalAlignment="Bottom" AllowDrop="True" PreviewDragEnter="Grid_DragEnter"/>
     </Grid>
 </Window>
